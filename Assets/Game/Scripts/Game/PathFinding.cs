@@ -1,9 +1,9 @@
 ﻿using Assets.Game.Scripts.Signals;
 using System.Collections.Generic;
-using UnityEngine;
+using Scripts.Game.Cell;
 using Zenject;
 
-public class PathFinding : MonoBehaviour {
+public class PathFinding  {
     private List<BaseCell> _allCellsList = new();
     private List<BaseCell> _closeList = new();
     private List<BaseCell> _openList = new();
@@ -60,34 +60,6 @@ public class PathFinding : MonoBehaviour {
             }
         }
         return null;
-    }
-
-    public List<BaseCell> FindReachableCells(BaseCell startCell, int stepLength) {
-        List<BaseCell> openList = new List<BaseCell>();
-        List<BaseCell> closeList = new List<BaseCell>();
-        List<BaseCell> reachableCells = new List<BaseCell> { startCell };
-        int startStepLength = stepLength;
-
-        while (stepLength > 0) {
-            List<BaseCell> newReachableCells = new List<BaseCell>();
-
-            foreach (var cell in reachableCells) {
-                foreach (var neighbor in cell.CellNeighbors) {
-                    if (!reachableCells.Contains(neighbor) && !newReachableCells.Contains(neighbor) && !openList.Contains(neighbor) && !closeList.Contains(neighbor)) {
-                        if (neighbor.GetTentativeGCost(startCell) <= startStepLength && neighbor.IsEmptyCell) {
-                            newReachableCells.Add(neighbor);
-                        }
-                    }
-                }
-            }
-
-            closeList.AddRange(reachableCells);
-            openList.AddRange(newReachableCells);
-            reachableCells = newReachableCells;
-            stepLength--;
-        }
-
-        return openList;
     }
 
     private List<BaseCell> CalculatePath(BaseCell endCell) {

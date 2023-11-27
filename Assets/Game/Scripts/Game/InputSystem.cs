@@ -30,12 +30,12 @@ public class InputSystem : MonoBehaviour {
         float xDirection = CalculateDirection(Input.mousePosition.x, Screen.width, _boardSize);
         float yDirection = CalculateDirection(Input.mousePosition.y, Screen.height, _boardSize);
 
-        if (xDirection != 0 || horizontal != 0) {
+        if (/*xDirection != 0 ||*/ horizontal != 0) {
             xDirection = xDirection == 0 ? horizontal : xDirection;
             _signalBus.Fire(new SignalCameraMove(new Vector3(xDirection, 0, 0)));
         }
 
-        if (yDirection != 0 || vertical != 0) {
+        if (/*yDirection != 0 ||*/ vertical != 0) {
             yDirection = yDirection == 0 ? vertical : yDirection;
             _signalBus.Fire(new SignalCameraMove(new Vector3(0, 0, yDirection)));
         }

@@ -30,6 +30,6 @@ public class ProjectInstaller : MonoInstaller {
         Container.DeclareSignal<SignalUnitSelected>().OptionalSubscriber();
         Container.DeclareSignal<SignalGridCreated>().OptionalSubscriber();
         Container.DeclareSignal<SignalCameraMove>().OptionalSubscriber();
-        Container.DeclareSignal<DisableCells>().OptionalSubscriber();
+        Container.DeclareSignal<SignalDisableCells>().OptionalSubscriber();
     }
 }

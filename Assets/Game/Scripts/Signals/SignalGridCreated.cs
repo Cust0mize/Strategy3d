@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Scripts.Game.Cell;
 
 namespace Assets.Game.Scripts.Signals {
     public class SignalGridCreated {

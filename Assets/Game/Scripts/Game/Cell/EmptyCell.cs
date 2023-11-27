@@ -1,3 +1,5 @@
-﻿public class EmptyCell : BaseCell {
+﻿namespace Scripts.Game.Cell {
+    public class EmptyCell : BaseCell {
 
+    }
 }
