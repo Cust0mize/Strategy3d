@@ -11,42 +11,42 @@ namespace Scripts.Game.Cell {
         [field: SerializeField] public int StepCost { get; private set; }
         [field: SerializeField] public BaseUnit BaseUnit { get; private set; }
         public bool IsMovebleCell { get; private set; }
+        public bool IsEvenRow => ZPosition % 2 == 0;
 
         private Material _cellMaterial;
         private Color _normalColor;
         private Color _selectColor = Color.red;
 
         public List<BaseCell> CellNeighbors { get; private set; } = new();
-        public int ZCount { get; private set; }
-        public int XCount { get; private set; }
+        public int ZPosition { get; private set; }
+        public int XPosition { get; private set; }
         private Vector3 _startPosition;
         private int _groupCount;
-
         public int GCost { get; private set; } = 0;
         public int HCost { get; private set; } = 0;
         public int FCost { get; private set; } = 0;
         public BaseCell CameFromTile { get; private set; }
 
-        public void Init(Vector3 position, int z, int j, int groupCount) {
+        public virtual void Init(Vector3 position, int z, int j, int groupCount) {
             _startPosition = position;
-            ZCount = z;
-            XCount = j;
+            ZPosition = z;
+            XPosition = j;
             _groupCount = groupCount;
-            _cellText.text = $"{ZCount}{XCount}";
-            gameObject.name = $"{ZCount}{XCount}";
+            _cellText.text = $"{ZPosition}{XPosition}";
+            gameObject.name = $"{ZPosition}{XPosition}";
             _cellMaterial = GetComponentInChildren<MeshRenderer>().material;
             _normalColor = _cellMaterial.color;
         }
 
         public void UpdatePosition(float _xOffset, float yOffset, float noOffsetX, float dopZOffxet) {
-            if (ZCount % 2 == 0) {
-                transform.position = new Vector3(_startPosition.x + yOffset * XCount, _startPosition.y, _startPosition.z + _xOffset * ZCount);
+            if (ZPosition % 2 == 0) {
+                transform.position = new Vector3(_startPosition.x + yOffset * XPosition, _startPosition.y, _startPosition.z + _xOffset * ZPosition);
             }
             else {
-                transform.position = new Vector3(_startPosition.x + yOffset * XCount + noOffsetX, _startPosition.y, _startPosition.z + _xOffset * ZCount + noOffsetX);
+                transform.position = new Vector3(_startPosition.x + yOffset * XPosition + noOffsetX, _startPosition.y, _startPosition.z + _xOffset * ZPosition + noOffsetX);
             }
 
-            if (ZCount > 1) {
+            if (ZPosition > 1) {
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _groupCount * dopZOffxet);
             }
         }
@@ -139,8 +139,8 @@ namespace Scripts.Game.Cell {
         }
 
         private int CalculateDistanceToTarget(BaseCell targetCell) {
-            int xDistance = Mathf.Abs(XCount - targetCell.XCount);
-            int zDistance = Mathf.Abs(ZCount - targetCell.ZCount);
+            int xDistance = Mathf.Abs(XPosition - targetCell.XPosition);
+            int zDistance = Mathf.Abs(ZPosition - targetCell.ZPosition);
             int remaining = Mathf.Abs(xDistance - zDistance);
             return StepCost * Mathf.Min(xDistance, zDistance) + StepCost * remaining;
         }

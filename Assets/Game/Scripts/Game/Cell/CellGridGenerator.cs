@@ -68,12 +68,12 @@ namespace Scripts.Game.Cell {
 
         private List<BaseCell> AddNeighbor(BaseCell cellBase) {
             var newCells = new List<BaseCell>();
-            var xOffset = cellBase.ZCount % 2 == 0 ? new[] { -1, 1, 0, 1, 0, -1 } : new[] { -1, 1, 0, -1, 0, 1 };
+            var xOffset = cellBase.ZPosition % 2 == 0 ? new[] { -1, 1, 0, 1, 0, -1 } : new[] { -1, 1, 0, -1, 0, 1 };
             var zOffset = new[] { 0, 0, -1, -1, 1, 1 };
 
             for (int i = 0; i < xOffset.Length; i++) {
                 var cell = _allCellsList.FirstOrDefault(cell =>
-                    cell.ZCount == cellBase.ZCount + zOffset[i] && cell.XCount == cellBase.XCount + xOffset[i]);
+                    cell.ZPosition == cellBase.ZPosition + zOffset[i] && cell.XPosition == cellBase.XPosition + xOffset[i]);
 
                 if (cell != null) {
                     newCells.Add(cell);

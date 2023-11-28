@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: RoadCellConfig
+  m_EditorClassIdentifier: Assembly-CSharp:Scripts.Game.Cell:RoadCellConfig
+  _prefabs:
+  - {fileID: -4170694485141620863, guid: c71c171f81cc9784caeb4170edf62560, type: 3}
+  - {fileID: -6049595593098199173, guid: 08bd9f892bbc6894b906f51762768952, type: 3}
+  - {fileID: 2164866478166155464, guid: 5ba7e5252d67a214d8d5f735a366c654, type: 3}
+  - {fileID: -730215265076117946, guid: 83c531ad6044f19499ef75f558e28c26, type: 3}
+  - {fileID: 4197894787030459546, guid: f848686376aee074abff074b988df836, type: 3}
+  - {fileID: 4806919794134289683, guid: 52072cfefac7f3d419466f26c3643610, type: 3}
+  - {fileID: -4902637903269062074, guid: 4466fe7d4801dd440b5273ce4c7ca906, type: 3}
+  - {fileID: 5448674476342918414, guid: 353c8c5a7806d4a488e10a9ac7e65383, type: 3}
+  - {fileID: 2905336682566549441, guid: 9ad6c9d5e4e91434387f51c094321e03, type: 3}
+  - {fileID: 3936525014107171676, guid: 03433b6f86d94704fbc5ecbdd5064c6b, type: 3}
+  - {fileID: -3113964768831850334, guid: 07abda3fb63db1148a61bd2be6c2f8f6, type: 3}
+  - {fileID: -4515321376801295980, guid: b056c653cb5e8f24290dd4b599df3554, type: 3}
+  - {fileID: -7134744662140566106, guid: bf11bf9afaf7d2b4ab3b5ee7f514ced4, type: 3}
