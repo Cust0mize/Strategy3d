@@ -6,7 +6,6 @@ public class InputSystem : MonoBehaviour {
     private SignalBus _signalBus;
     private Camera _camera;
     private Ray _ray;
-    private float _boardSize = 75;
 
     private void Start() {
         _ray = new Ray(transform.position, transform.forward);
@@ -27,17 +26,12 @@ public class InputSystem : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        float xDirection = CalculateDirection(Input.mousePosition.x, Screen.width, _boardSize);
-        float yDirection = CalculateDirection(Input.mousePosition.y, Screen.height, _boardSize);
-
-        if (/*xDirection != 0 ||*/ horizontal != 0) {
-            xDirection = xDirection == 0 ? horizontal : xDirection;
-            _signalBus.Fire(new SignalCameraMove(new Vector3(xDirection, 0, 0)));
+        if (horizontal != 0) {
+            _signalBus.Fire(new SignalCameraMove(new Vector3(horizontal, 0, 0)));
         }
 
-        if (/*yDirection != 0 ||*/ vertical != 0) {
-            yDirection = yDirection == 0 ? vertical : yDirection;
-            _signalBus.Fire(new SignalCameraMove(new Vector3(0, 0, yDirection)));
+        if (vertical != 0) {
+            _signalBus.Fire(new SignalCameraMove(new Vector3(0, 0, vertical)));
         }
     }
 
@@ -48,7 +42,7 @@ public class InputSystem : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonUp(1)) {
             if (RayHit(out RaycastHit raycastHit)) {
                 _signalBus.Fire(new SignalRightRaycastHit(raycastHit));
             }
