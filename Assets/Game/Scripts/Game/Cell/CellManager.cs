@@ -22,6 +22,10 @@ namespace Scripts.Game.Cell {
             _signalBus.Subscribe<SignalDisableCells>(DisableCell);
         }
 
+        //private void Start() {
+        //    CreateTransitionGraph();
+        //}
+
         private void TrySelect(SignalLeftRaycastHit signalRaycastHit) {
             if (signalRaycastHit.Hit.collider.TryGetComponent(out CellSelectionComponent newSelectionCell)) {
                 if (_oldSelectionCell == newSelectionCell) {
@@ -53,5 +57,29 @@ namespace Scripts.Game.Cell {
             }
             _shadeCells.Clear();
         }
+
+        //private Graph CreateTransitionGraph() {
+        //    var graph = new Graph();
+        //    var firstNode = new Node(TransitionDirection.Left);
+        //    var secondNode = new Node(TransitionDirection.UpLeft);
+        //    var thirdNode = new Node(TransitionDirection.DownLeft);
+        //    var fourthNode = new Node(TransitionDirection.UpRight);
+        //    var fifthNode = new Node(TransitionDirection.DownRight);
+        //    var sixthNode = new Node(TransitionDirection.Right);
+        //    firstNode.AddNewNode(secondNode);
+        //    firstNode.AddNewNode(thirdNode);
+        //    thirdNode.AddNewNode(fifthNode);
+        //    secondNode.AddNewNode(fourthNode);
+        //    fourthNode.AddNewNode(sixthNode);
+        //    fifthNode.AddNewNode(sixthNode);
+        //    graph.Graphs.AddRange(new List<Node> { firstNode, secondNode, thirdNode, fourthNode, fifthNode, sixthNode });
+        //    return graph;
+        //}
+
+        //public int GetDistanceToNode(TransitionDirection start, TransitionDirection end) {
+        //    var graph = CreateTransitionGraph();
+        //    var result = graph.GetDistanseToNode(graph.GetNode(start), graph.GetNode(end));
+        //    return result;
+        //}
     }
 }

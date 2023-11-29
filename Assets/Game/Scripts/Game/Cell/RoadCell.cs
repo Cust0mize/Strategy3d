@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using System;
-using ModestTree;
-using System.Linq;
 
 namespace Scripts.Game.Cell {
     public class RoadCell : BaseCell {
         [SerializeField] private List<RoadElement> _roadElements;
         private Dictionary<int, List<RoadElement>> _roadsDictionary = new();
         private Dictionary<TransitionDirection, bool> _transitions = new();
-
 
         public override void Init(Vector3 position, int z, int j, int groupCount) {
             base.Init(position, z, j, groupCount);
@@ -54,36 +51,40 @@ namespace Scripts.Game.Cell {
                     SearchSochelenenia(i);
                 }
             }
-            _roadsDictionary[numberNeighborsSameType][0].gameObject.SetActive(true);
-        }
-
-        [ContextMenu("Test")]
-        public void Test() {
-            var graph = new Graph();
-            var firstNode = new Node(TransitionDirection.Left);
-            var secondNode = new Node(TransitionDirection.UpLeft);
-            var thirdNode = new Node(TransitionDirection.DownLeft);
-            var fourthNode = new Node(TransitionDirection.UpRight);
-            var fifthNode = new Node(TransitionDirection.DownRight);
-            var sixthNode = new Node(TransitionDirection.Right);
-            firstNode.AddNewNode(secondNode);
-            firstNode.AddNewNode(thirdNode);
-            thirdNode.AddNewNode(fifthNode);
-            secondNode.AddNewNode(fourthNode);
-            fourthNode.AddNewNode(sixthNode);
-            fifthNode.AddNewNode(sixthNode);
-            graph.Graphs.AddRange(new List<Node> { firstNode, secondNode, thirdNode, fourthNode, fifthNode, sixthNode });
-            var result = graph.GetDistanseToNode(graph.GetNode(TransitionDirection.Left), graph.GetNode(TransitionDirection.Right));
-            print(result);
-
             List<TransitionDirection> transitions = new();
-
             foreach (var item in _transitions) {
                 if (item.Value) {
                     transitions.Add(item.Key);
                 }
             }
+
+            //if (numberNeighborsSameType == 2 || numberNeighborsSameType == 3) {
+            //    foreach (var item in _roadsDictionary[numberNeighborsSameType]) {
+            //        item.SetDistace();
+
+            //        if (item.Distance == GetSummDistance(transitions)) {
+            //            item.gameObject.SetActive(true);
+            //        }
+            //        else if (true) {
+
+            //        }
+            //    }
+            //}
+            //else {
+                _roadsDictionary[numberNeighborsSameType][0].gameObject.SetActive(true);
+            //}
         }
+
+        //private int GetSummDistance(List<TransitionDirection> transitionDirections) {
+        //    int summDistance = 0;
+        //    for (int i = 0; i < transitionDirections.Count; i++) {
+        //        if (i == 0) {
+        //            continue;
+        //        }
+        //        summDistance += CellManager.GetDistanceToNode(transitionDirections[0], transitionDirections[i]);
+        //    }
+        //    return summDistance - 1;
+        //}
 
         private void SearchSochelenenia(int i) {
             if (CellNeighbors[i].ZPosition == ZPosition) {
@@ -134,64 +135,12 @@ namespace Scripts.Game.Cell {
     }
 }
 
-
-public class Graph {
-    public readonly List<Node> Graphs = new();
-
-    public Node GetNode(TransitionDirection transitionDirection) {
-        return Graphs.FirstOrDefault(x => x._currentTransitionDirection == transitionDirection);
-    }
-
-    public int GetDistanseToNode(Node startNode, Node endNode) {
-        var targetNode = startNode;
-        int tryCount = 0;
-
-        while (targetNode != endNode) {
-            tryCount++;
-            if (targetNode.ConnectedNodes[0] == endNode) {
-                break;
-            }
-            else {
-                targetNode = targetNode.ConnectedNodes[0];
-            }
-            if (tryCount >= 1000) {
-                Debug.LogError("HotMnogo");
-                break;
-            }
-        }
-
-        return tryCount;
-    }
-}
-
-public class Node {
-    public TransitionDirection _currentTransitionDirection { get; private set; }
-    public readonly List<Node> ConnectedNodes = new();
-
-    public Node(TransitionDirection transitionDirection) {
-        _currentTransitionDirection = transitionDirection;
-    }
-
-    public void AddNewNode(Node node) {
-        ConnectedNodes.Add(node);
-        node.ObratAdd(this);
-    }
-
-    public void ObratAdd(Node node) {
-        ConnectedNodes.Add(node);
-    }
-}
-
-//public class Graph {
-//    public readonly List<Node> Graphs = new();
-//}
-
 public enum TransitionDirection {
     None = -99,
-    Left = -1,
-    Right = 1,
-    UpLeft = 2,
-    UpRight = 3,
-    DownLeft = 4,
-    DownRight = 5,
+    Left,
+    UpLeft,
+    UpRight,
+    Right,
+    DownRight,
+    DownLeft,
 }

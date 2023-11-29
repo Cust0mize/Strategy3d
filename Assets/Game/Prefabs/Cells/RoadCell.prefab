@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d5284a0a1301a4bbed30a23476c468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CellBase>k__BackingField: {fileID: 0}
+  <CellBase>k__BackingField: {fileID: 5148666216125760342}
 --- !u!114 &5148666216125760342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 4
-  _transitionDirections: 
+  _transitionDirections: 9effffff9fffffffa0ffffffa1ffffff
 --- !u!1 &1679042657448363124
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 2
-  _transitionDirections: 0100000002000000
+  _transitionDirections: 9effffffa1ffffff
 --- !u!1 &1931788438596989557
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 0
-  _transitionDirections: 00000000
+  _transitionDirections: 
 --- !u!1 &2047732972376550488
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 3
-  _transitionDirections: 
+  _transitionDirections: 9effffff9fffffffa0ffffff
 --- !u!1 &2315597046928659347
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 4
-  _transitionDirections: 
+  _transitionDirections: 9effffff9fffffffa1ffffffa2ffffff
 --- !u!1 &3224367437877186114
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 4
-  _transitionDirections: 
+  _transitionDirections: 9effffff9fffffffa0ffffffa2ffffff
 --- !u!1 &3412516583036914178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 3
-  _transitionDirections: 
+  _transitionDirections: 9effffffa1ffffff9fffffff
 --- !u!1 &3994344974476091147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 3
-  _transitionDirections: 
+  _transitionDirections: 9effffffa0ffffffa2ffffff
 --- !u!1 &5774512688840499235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 2
-  _transitionDirections: 
+  _transitionDirections: 9effffff9fffffff
 --- !u!1 &6489369107315869155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 6
-  _transitionDirections: 010000000200000003000000040000000500000006000000
+  _transitionDirections: 9effffff9fffffffa0ffffffa1ffffffa2ffffffa3ffffff
 --- !u!1 &6676550575102810396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 5
-  _transitionDirections: 
+  _transitionDirections: 9fffffffa0ffffffa1ffffffa2ffffffa3ffffff
 --- !u!1 &7706714629327439730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 3
-  _transitionDirections: 
+  _transitionDirections: 9effffffa1ffffffa3ffffff
 --- !u!1 &9042427304978738146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8686451429624696408
 Transform:
   m_ObjectHideFlags: 0
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 2
-  _transitionDirections: 0100000000000000
+  _transitionDirections: 9effffffa0ffffff
 --- !u!1 &9142972738706893579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,4 +2167,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoadContactNubmer>k__BackingField: 1
-  _transitionDirections: 01000000
+  _transitionDirections: 9effffff

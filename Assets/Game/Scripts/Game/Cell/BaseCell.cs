@@ -2,6 +2,7 @@
 using Scripts.Game.Unit;
 using UnityEngine;
 using TMPro;
+using Zenject;
 
 namespace Scripts.Game.Cell {
     public abstract class BaseCell : MonoBehaviour {
@@ -25,6 +26,7 @@ namespace Scripts.Game.Cell {
         public int GCost { get; private set; } = 0;
         public int HCost { get; private set; } = 0;
         public int FCost { get; private set; } = 0;
+        protected CellManager CellManager { get; private set; }
         public BaseCell CameFromTile { get; private set; }
 
         public virtual void Init(Vector3 position, int z, int j, int groupCount) {
@@ -36,6 +38,11 @@ namespace Scripts.Game.Cell {
             gameObject.name = $"{ZPosition}{XPosition}";
             _cellMaterial = GetComponentInChildren<MeshRenderer>().material;
             _normalColor = _cellMaterial.color;
+        }
+
+        [Inject]
+        private void Construct(CellManager cellManager) {
+            CellManager = cellManager;
         }
 
         public void UpdatePosition(float _xOffset, float yOffset, float noOffsetX, float dopZOffxet) {
