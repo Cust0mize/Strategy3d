@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using System;
+using System.Linq;
 
 namespace Scripts.Game.Cell {
     public class RoadCell : BaseCell {
@@ -20,6 +21,7 @@ namespace Scripts.Game.Cell {
             }
 
             for (int i = 0; i < _roadElements.Count; i++) {
+                _roadElements[i].ConvertTransitionDirectionToBinaryValue();
                 _roadElements[i].gameObject.SetActive(false);
                 if (_roadsDictionary.ContainsKey(_roadElements[i].RoadContactNubmer)) {
                     _roadsDictionary[_roadElements[i].RoadContactNubmer].Add(_roadElements[i]);
@@ -48,7 +50,7 @@ namespace Scripts.Game.Cell {
             for (int i = 0; i < CellNeighbors.Count; i++) {
                 if (CellNeighbors[i].GetType() == GetType()) {
                     numberNeighborsSameType++;
-                    SearchSochelenenia(i);
+                    SearchConnecteds(i);
                 }
             }
             List<TransitionDirection> transitions = new();
@@ -57,36 +59,31 @@ namespace Scripts.Game.Cell {
                     transitions.Add(item.Key);
                 }
             }
+            RoadElementUtils roadElementUtils = new RoadElementUtils();
+            string binaruElement = roadElementUtils.GetBinaryValue(transitions, out int count);
+            string searchElement = roadElementUtils.ReplaceChar(binaruElement, _roadsDictionary[count], out int rotateCount);
+            RoadElement element = _roadsDictionary[count].FirstOrDefault(x => x.BinaryValue == searchElement);
+            element.gameObject.transform.Rotate(0, rotateCount * -60, 0);
 
-            //if (numberNeighborsSameType == 2 || numberNeighborsSameType == 3) {
-            //    foreach (var item in _roadsDictionary[numberNeighborsSameType]) {
-            //        item.SetDistace();
 
-            //        if (item.Distance == GetSummDistance(transitions)) {
-            //            item.gameObject.SetActive(true);
-            //        }
-            //        else if (true) {
-
-            //        }
-            //    }
-            //}
-            //else {
-                _roadsDictionary[numberNeighborsSameType][0].gameObject.SetActive(true);
-            //}
+            element.gameObject.SetActive(true);
         }
 
-        //private int GetSummDistance(List<TransitionDirection> transitionDirections) {
-        //    int summDistance = 0;
-        //    for (int i = 0; i < transitionDirections.Count; i++) {
-        //        if (i == 0) {
-        //            continue;
-        //        }
-        //        summDistance += CellManager.GetDistanceToNode(transitionDirections[0], transitionDirections[i]);
-        //    }
-        //    return summDistance - 1;
-        //}
+        [ContextMenu("GetBinaryInfo")]
+        public void GetBinaryInfo() {
+            List<TransitionDirection> transitions = new();
+            foreach (var item in _transitions) {
+                if (item.Value) {
+                    transitions.Add(item.Key);
+                }
+            }
 
-        private void SearchSochelenenia(int i) {
+            RoadElementUtils roadElementUtils = new RoadElementUtils();
+            string binaruElement = roadElementUtils.GetBinaryValue(transitions, out int count);
+            roadElementUtils.ReplaceChar(binaruElement, _roadsDictionary[count], out int rotateCount);
+        }
+
+        private void SearchConnecteds(int i) {
             if (CellNeighbors[i].ZPosition == ZPosition) {
                 if (CellNeighbors[i].XPosition - XPosition == -1) {
                     _transitions[TransitionDirection.Left] = true;

@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Scripts.Game.Cell {
     public class CellManager : MonoBehaviour {
+        public Dictionary<int, List<RoadElement>> RoadsDictionary { get; private set; } = new();
         private List<BaseCell> _shadeCells = new List<BaseCell>();
         private CellSelectionComponent _oldSelectionCell;
         private ReachableUtils _reachableUtils;
@@ -22,9 +23,8 @@ namespace Scripts.Game.Cell {
             _signalBus.Subscribe<SignalDisableCells>(DisableCell);
         }
 
-        //private void Start() {
-        //    CreateTransitionGraph();
-        //}
+        private void Start() {
+        }
 
         private void TrySelect(SignalLeftRaycastHit signalRaycastHit) {
             if (signalRaycastHit.Hit.collider.TryGetComponent(out CellSelectionComponent newSelectionCell)) {
